@@ -64,41 +64,37 @@ const getRandomNumberWithFloat = function(min, max, decimalPlace) {
   }
 
   const randomNumber=(Math.random() * (max - min) + min);
-
   return randomNumber.toFixed(decimalPlace)
 }
 
 const getRandomArrayElement = function(elements) {
-
   return elements[getRandomNumber(0, elements.length - 1)];
 };
 
 const getUniqueRandomArray = function(elements) {
+  let mixedArray = [];
 
-  let randArray = [];
-  randArray[0] = getRandomArrayElement(elements);
+  mixedArray[0] = getRandomArrayElement(elements);
 
-  while (randArray.length < elements.length) {
+  while (mixedArray.length < elements.length) {
     let nextElement = getRandomArrayElement(elements);
 
-    if (randArray.indexOf(nextElement) == -1) {
-      randArray.push(nextElement);
+    if (mixedArray.indexOf(nextElement) === -1) {
+      mixedArray.push(nextElement);
     }
   }
 
-  randArray.length = (getRandomNumber(0, elements.length - 1));
-  return randArray;
+  mixedArray.length = (getRandomNumber(0, elements.length - 1));
+  return mixedArray;
 };
 
 const createAuthor = function() {
-
   return {
-    avatar: 'img/avatars/user{{x' + getRandomNumber(1, 8) + '}}.png',
+    avatar: 'img/avatars/user{{0' + getRandomNumber(1, 8) + '}}.png',
   };
 };
 
 const createLocation = function() {
-
   return {
     x: getRandomNumberWithFloat(35.65000, 35.70000, 5),
     y: getRandomNumberWithFloat(139.70000, 139.80000, 5),
@@ -106,7 +102,6 @@ const createLocation = function() {
 };
 
 const createOffer = function() {
-
   return {
     title: getRandomArrayElement(TITLES),
     address: createLocation(),
@@ -123,7 +118,6 @@ const createOffer = function() {
 };
 
 const getOffers = function() {
-
   return {
     author: createAuthor(),
     offer: createOffer(),
@@ -131,6 +125,6 @@ const getOffers = function() {
   };
 };
 
-const fakeOffers = new Array(NUMBER_OF_OFFERS).fill(null).map(() => getOffers());
+const mockedOffers = new Array(NUMBER_OF_OFFERS).fill(null).map(() => getOffers());
 
-fakeOffers();
+
