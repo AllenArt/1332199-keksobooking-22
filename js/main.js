@@ -75,6 +75,7 @@ const getUniqueRandomArray = function(elements) {
   let mixedArray = [];
 
   mixedArray[0] = getRandomArrayElement(elements);
+  let randomCount
 
   while (mixedArray.length < elements.length) {
     let nextElement = getRandomArrayElement(elements);
@@ -127,4 +128,4 @@ const getOffers = function() {
 
 const mockedOffers = new Array(NUMBER_OF_OFFERS).fill(null).map(() => getOffers());
 
-
+console.log(mockedOffers);
