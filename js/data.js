@@ -46,7 +46,7 @@ const NUMBER_OF_OFFERS = 10;
 
 const createAuthor = function() {
   return {
-    avatar: 'img/avatars/user{{0' + getRandomNumber(1, 8) + '}}.png',
+    avatar: 'img/avatars/user0' + getRandomNumber(1, 8) + '.png',
   };
 };
 
@@ -83,4 +83,4 @@ const getOffers = function() {
 
 const mockedOffers = new Array(NUMBER_OF_OFFERS).fill(null).map(() => getOffers());
 
-mockedOffers;
+export {mockedOffers};
