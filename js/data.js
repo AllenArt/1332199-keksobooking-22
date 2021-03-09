@@ -40,9 +40,14 @@ const PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
 ];
 
+const OFFER_TYPES = {
+  flat: 'Квартира',
+  bungalow: 'Бунгало',
+  house: 'Дом',
+  palace: 'Дворец',
+};
+
 const NUMBER_OF_OFFERS = 10;
-
-
 
 const createAuthor = function() {
   return {
@@ -83,4 +88,4 @@ const getOffers = function() {
 
 const mockedOffers = new Array(NUMBER_OF_OFFERS).fill(null).map(() => getOffers());
 
-export {mockedOffers};
+export {mockedOffers, OFFER_TYPES};

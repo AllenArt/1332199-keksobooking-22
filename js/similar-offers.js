@@ -1,12 +1,11 @@
-import {mockedOffers} from './data.js';
+import {mockedOffers, OFFER_TYPES} from './data.js';
 
 const offerTemplate = document.querySelector('#card').content;
 const offersBox = document.createDocumentFragment();
 const mapCanvas = document.querySelector('#map-canvas');
 
 mockedOffers.forEach(function (element) {
-  const newOfferTemplate = offerTemplate.cloneNode(true);
-  const newOffer = newOfferTemplate.querySelector('article');
+  const newOffer = offerTemplate.cloneNode(true).querySelector('article');
 
   const newOfferTitle = newOffer.querySelector('.popup__title');
   newOfferTitle.textContent = element.offer.title;
@@ -19,13 +18,7 @@ mockedOffers.forEach(function (element) {
 
   const newOfferType = newOffer.querySelector('.popup__type');
   const offerType = element.offer.type;
-  const offerTypes = {
-    flat: 'Квартира',
-    bungalow: 'Бунгало',
-    house: 'Дом',
-    palace: 'Дворец',
-  };
-  newOfferType.textContent = offerTypes[offerType];
+  newOfferType.textContent = OFFER_TYPES[offerType];
 
   const NewOfferRoomAndGuest = newOffer.querySelector('.popup__text--capacity');
   NewOfferRoomAndGuest.textContent = element.offer.rooms + ' комнаты для ' + element.offer.guests + ' гостей»';
@@ -33,43 +26,42 @@ mockedOffers.forEach(function (element) {
   const newOfferTime = newOffer.querySelector('.popup__text--time');
   newOfferTime.textContent = 'Заезд после ' + element.offer.checkin + ', выезд до' + element.offer.checkout;
 
-  const newOfferFeature = newOffer.querySelector('.popup__features');
-  newOfferFeature.removeChild;
-  const offerFeatureList = element.offer.features;
+  let newOfferFeatures = newOffer.querySelector('.popup__features');
+  const offerFeaturesList = element.offer.features;
 
-  if (offerFeatureList.length === 0) {
-    newOfferFeature.classList.add('hidden');
+  if (offerFeaturesList.length === 0) {
+    newOfferFeatures.classList.add('hidden');
   }
 
-  while (newOfferFeature.firstChild) {
-    newOfferFeature.removeChild(newOfferFeature.firstChild)
+  while (newOfferFeatures.firstChild) {
+    newOfferFeatures.removeChild(newOfferFeatures.firstChild)
   }
 
-  offerFeatureList.forEach(function (feature) {
+  offerFeaturesList.forEach(function (feature) {
     const newOfferFeatureItem = document.createElement('li');
     newOfferFeatureItem.classList.add('popup__feature', 'popup__feature--' + feature);
-    newOfferFeature.appendChild(newOfferFeatureItem);
+    newOfferFeatures.appendChild(newOfferFeatureItem);
   });
 
   const newOfferDescription = newOffer.querySelector('.popup__description');
   newOfferDescription.textContent = element.offer.description;
 
-  const newOfferPhoto = newOffer.querySelector('.popup__photos');
-  const offerPhotoList = element.offer.photos;
-  const newOfferPhotoList = document.createDocumentFragment();
-  const OfferPhotoTemplate = newOfferPhoto.querySelector('.popup__photo');
-  newOfferPhoto.removeChild(OfferPhotoTemplate);
+  const newOfferPhotos = newOffer.querySelector('.popup__photos');
+  const offerPhotosList = element.offer.photos;
+  const newOfferPhotosList = document.createDocumentFragment();
+  const OfferPhotoTemplate = newOfferPhotos.querySelector('.popup__photo');
+  newOfferPhotos.removeChild(OfferPhotoTemplate);
 
-  if (offerPhotoList.length === 0) {
-    offerPhotoList.classList.add('hidden');
+  if (offerPhotosList.length === 0) {
+    offerPhotosList.classList.add('hidden');
   }
 
-  offerPhotoList.forEach(function(photo) {
+  offerPhotosList.forEach(function(photo) {
     const newOfferPhotoItem = OfferPhotoTemplate.cloneNode(true);
     newOfferPhotoItem.src = photo;
-    newOfferPhotoList.appendChild(newOfferPhotoItem);
+    newOfferPhotosList.appendChild(newOfferPhotoItem);
   });
-  newOfferPhoto.appendChild(newOfferPhotoList);
+  newOfferPhotos.appendChild(newOfferPhotosList);
 
   const newOfferAvatar = newOffer.querySelector('.popup__avatar');
   newOfferAvatar.src = element.author.avatar;
