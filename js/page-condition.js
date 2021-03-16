@@ -5,28 +5,28 @@ const offerFieldsets = offerForm.querySelectorAll('fieldset');
 const mapFilterForm = document.querySelector('.map__filters');
 const mapFilters = mapFilterForm.querySelectorAll('select, fieldset');
 
+const addDisabledAtribute = function(element) {
+  element.setAttribute('disabled', true);
+};
+
+const removeDisabledAttribute = function(element) {
+  element.removeAttribute('disabled');
+};
+
 offerForm.classList.add('ad-form--disabled');
 
-offerFieldsets.forEach(function (fieldset) {
-  fieldset.setAttribute('disabled', true);
-})
+offerFieldsets.forEach(addDisabledAtribute);
 
 mapFilterForm.classList.add('map__filters--disabled');
 
-mapFilters.forEach(function (filter) {
-  filter.setAttribute('disabled', true);
-});
+mapFilters.forEach(addDisabledAtribute);
 
 map.whenReady(function() {
   offerForm.classList.remove('ad-form--disabled');
 
-  offerFieldsets.forEach(function (fieldset) {
-    fieldset.removeAttribute('disabled');
-  });
+  offerFieldsets.forEach(removeDisabledAttribute);
 
   mapFilterForm.classList.remove('map__filters--disabled');
 
-  mapFilters.forEach(function (filter) {
-    filter.removeAttribute('disabled');
-  });
+  mapFilters.forEach(removeDisabledAttribute);
 });
