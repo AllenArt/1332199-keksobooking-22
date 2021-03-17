@@ -1,8 +1,7 @@
 import {mockedOffers, OFFER_TYPES} from './data.js';
 
 const offerTemplate = document.querySelector('#card').content;
-const offersBox = document.createDocumentFragment();
-const mapCanvas = document.querySelector('#map-canvas');
+const offersBox = document.createElement('div');
 
 mockedOffers.forEach(function (element) {
   const newOffer = offerTemplate.cloneNode(true).querySelector('article');
@@ -11,10 +10,10 @@ mockedOffers.forEach(function (element) {
   newOfferTitle.textContent = element.offer.title;
 
   const newOfferAddres = newOffer.querySelector('.popup__text--address');
-  newOfferAddres.textContent = element.offer.address.x + ' ' + element.offer.address.y;
+  newOfferAddres.innerHTML = element.offer.address.x + ' ' + element.offer.address.y;
 
   const newOfferPrice = newOffer.querySelector('.popup__text--price');
-  newOfferPrice.textContent = element.offer.price + '₽/ночь';
+  newOfferPrice.textContent = element.offer.price + 'р/ночь';
 
   const newOfferType = newOffer.querySelector('.popup__type');
   const offerType = element.offer.type;
@@ -69,4 +68,4 @@ mockedOffers.forEach(function (element) {
   offersBox.appendChild(newOffer);
 });
 
-mapCanvas.appendChild(offersBox.firstChild);
+export {offersBox};
