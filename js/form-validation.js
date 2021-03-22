@@ -24,7 +24,7 @@ roomQuantity.addEventListener('change', function() {
   switch (roomQuantity.value) {
     case '1':
       capacityVariants.forEach(function(capacity) {
-        if (capacity.value != '1') {
+        if (capacity.value !== '1') {
           addDisabledAtribute(capacity);
         } else {
           removeDisabledAttribute(capacity);
