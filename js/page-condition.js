@@ -1,17 +1,10 @@
-import {map} from './map.js'
+import {map} from './map.js';
+import {addDisabledAtribute, removeDisabledAttribute} from './utils.js';
 
 const offerForm = document.querySelector('.ad-form');
 const offerFieldsets = offerForm.querySelectorAll('fieldset');
 const mapFilterForm = document.querySelector('.map__filters');
 const mapFilters = mapFilterForm.querySelectorAll('select, fieldset');
-
-const addDisabledAtribute = function(element) {
-  element.setAttribute('disabled', true);
-};
-
-const removeDisabledAttribute = function(element) {
-  element.removeAttribute('disabled');
-};
 
 offerForm.classList.add('ad-form--disabled');
 

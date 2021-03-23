@@ -7,19 +7,19 @@ const getPrice = function(housingTypeSelect) {
   switch (housingTypeSelect.value) {
     case 'bungalow':
       housingPrice.placeholder = '0';
-      housingPrice.setAttribute('min', 0);
+      housingPrice.min = '0';
       break;
     case 'flat':
       housingPrice.placeholder = '1000';
-      housingPrice.setAttribute('min', 1000);
+      housingPrice.min = '1000';
       break;
     case 'house':
       housingPrice.placeholder = '5000';
-      housingPrice.setAttribute('min', 5000);
+      housingPrice.min = '5000';
       break;
     case 'palace':
       housingPrice.placeholder = '10000';
-      housingPrice.setAttribute('min', 10000);
+      housingPrice.min = '10000';
       break;
   }
 };

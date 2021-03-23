@@ -43,4 +43,12 @@ const getUniqueRandomArray = function(elements) {
   return mixedArray;
 };
 
-export {getRandomNumber, getRandomNumberWithFloat, getRandomArrayElement, getUniqueRandomArray};
+const addDisabledAtribute = function(element) {
+  element.setAttribute('disabled', true);
+};
+
+const removeDisabledAttribute = function(element) {
+  element.removeAttribute('disabled');
+};
+
+export {getRandomNumber, getRandomNumberWithFloat, getRandomArrayElement, getUniqueRandomArray, addDisabledAtribute, removeDisabledAttribute};
